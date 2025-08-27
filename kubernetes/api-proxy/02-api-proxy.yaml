@@ -1,0 +1,8 @@
+apiVersion: tailscale.com/v1alpha1
+kind: APIServerProxy
+metadata:
+  name: kube-api-proxy
+spec:
+  tags:
+    - tag:k8s
+  https: true
