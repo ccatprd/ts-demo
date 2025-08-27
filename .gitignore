@@ -1,0 +1,23 @@
+# Terraform
+**/.terraform/*
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfvars
+*.tfvars.json
+
+# Kubernetes secrets
+kubernetes/**/secret*.yaml
+kubernetes/**/tailscale-auth*.yaml
+kubernetes/operator/01-auth-secret.yaml
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
