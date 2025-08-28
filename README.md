@@ -184,7 +184,9 @@ kubectl apply -f testbox-pod.yaml
 kubectl wait --for=condition=Ready pod/testbox --timeout=120s
 ```
 
-On your laptop (I used elevated PowerShell for this simple web server):
+On your laptop (I used elevated PowerShell for this simple web server)
+
+I ran this from a directory that had a text file in it "myfile.txt", also replace bind address with your actual tailnet IP value
 
 ```powershell
 python3 -m http.server 8000 --bind <your-tailnet-ip>
