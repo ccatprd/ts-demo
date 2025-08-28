@@ -175,6 +175,8 @@ aws eks describe-cluster \
 
 ## 8) Egress demo
 
+Modify the tailnet-service.yaml file so it has your actual tailnet IP
+
 ```bash
 cd ../kubernetes/egress
 kubectl apply -f tailnet-service.yaml
