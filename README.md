@@ -3,7 +3,7 @@
 This repo stands up an EKS cluster with the Tailscale Kubernetes Operator. It demonstrates:
 
 - API Server Proxy: `kubectl` to a private EKS API via the operator’s Tailscale device  
-- Egress to a tailnet node from a pod using a simple `Service`
+- Cluster Egress to a tailnet node from a pod using a simple `Service`
 
 ## Prereqs
 
