@@ -133,7 +133,14 @@ kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}{"\n"}'
 kubectl get nodes
 ```
 
-## 6) Prove the API Proxy tunnel works
+## 6) Lock down the EKS API to private only
+
+```hcl
+cluster_endpoint_private_access = true
+cluster_endpoint_public_access  = false
+```
+
+## 7) Prove the API Proxy tunnel works
 
 With your Tailscale client **connected**, the proxy responds:
 
@@ -146,13 +153,6 @@ Disconnect or disable your local Tailscale client, then try again:
 ```bash
 kubectl get nodes
 # This should fail to connect, proving the API is private and only reachable over Tailscale
-```
-
-## 7) Lock down the EKS API to private only
-
-```hcl
-cluster_endpoint_private_access = true
-cluster_endpoint_public_access  = false
 ```
 
 Apply only the EKS module:
@@ -201,4 +201,4 @@ curl -vk https://tailscale-operator.<tailnet>.ts.net/livez
 
 - Do not commit OAuth credentials. Keep `01-operator-oauth-secret.yaml` local.  
 - In this guide the proxy runs in noauth mode, relying on AWS IAM auth from kubeconfig.  
-- If `kubectl` prompts for a username, you are on a context missing exec auth. Switch back to `ts-proxy` or rebuild it.  
+- If `kubectl` asks for a username, you're on a context missing exec auth. Switch back to `ts-proxy` or rebuild it.
