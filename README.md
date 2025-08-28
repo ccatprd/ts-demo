@@ -164,6 +164,15 @@ kubectl get nodes
 # This should fail to connect, proving the API is private and only reachable over Tailscale
 ```
 
+You can also grab the EKS cluster endpoint information via awscli:
+
+```bash
+aws eks describe-cluster \
+  --name tailscale-demo-cluster \
+  --region us-east-1 \
+  --query "cluster.resourcesVpcConfig.{Public: endpointPublicAccess, Private: endpointPrivateAccess}" \
+```
+
 ## 8) Egress demo
 
 ```bash
