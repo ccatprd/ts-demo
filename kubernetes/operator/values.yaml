@@ -1,10 +1,12 @@
-# Minimal values for the Tailscale Operator via Helm
-
 oauth:
-  # We create this Secret outside Helm so we never commit credentials.
   existingSecret: operator-oauth
 
-# Optional: default tag applied to nodes the operator registers
-operator:
-  defaultTags:
-    - tag:k8s
+# Uing noauth so kubectl uses AWS IAM
+apiServerProxyConfig:
+  mode: "noauth"
+
+operatorConfig:
+  defaultTags: "tag:k8s-operator"
+
+proxyConfig:
+  defaultTags: "tag:k8s"
