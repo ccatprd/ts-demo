@@ -19,7 +19,7 @@ git clone https://github.com/ccatprd/ts-demo
 cd ts-demo
 ```
 
-Edit `terraform/main.tf` and set the EKS endpoint public temporarily:
+Edit `terraform/main.tf` and set the EKS endpoint public **temporarily**:
 
 ```hcl
 cluster_endpoint_private_access = true
@@ -123,7 +123,7 @@ kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}{"\n"}'
 kubectl get nodes
 ```
 
-## 6) (Optional) Lock down the EKS API to private only
+## 6) Lock down the EKS API to private only
 
 Flip the endpoint back to private:
 
