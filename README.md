@@ -134,6 +134,8 @@ kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}{"\n"}'
 
 ## 6) Lock down the EKS API to private only
 
+`terraform/main.tf` should contain be set with:
+
 ```hcl
 cluster_endpoint_private_access = true
 cluster_endpoint_public_access  = false
