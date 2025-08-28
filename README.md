@@ -146,6 +146,7 @@ Apply only the EKS module:
 cd terraform
 terraform apply -target=module.eks
 ```
+Your `ts-proxy` context will continue working. The public context will stop.
 
 ## 7) Prove the API Proxy tunnel works
 
@@ -161,8 +162,6 @@ Disconnect or disable your local Tailscale client, then try again:
 kubectl get nodes
 # This should fail to connect, proving the API is private and only reachable over Tailscale
 ```
-
-Your `ts-proxy` context will continue working. The public context will stop.
 
 ## 8) Egress demo
 
