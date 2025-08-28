@@ -199,6 +199,6 @@ curl -vk https://tailscale-operator.<tailnet>.ts.net/livez
 
 ## Notes
 
-- Do not commit OAuth credentials. Keep `01-operator-oauth-secret.yaml` local.  
+- A secrets manager is always recommended for PROD, but for this simple proof of concept we can skip it.
 - In this guide the proxy runs in noauth mode, relying on AWS IAM auth from kubeconfig.  
 - If `kubectl` asks for a username, you're on a context missing exec auth. Switch back to `ts-proxy` or rebuild it.
