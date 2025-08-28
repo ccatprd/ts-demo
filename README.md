@@ -120,8 +120,8 @@ export TS_URL="https://tailscale-operator.<tailnet>.ts.net:443"
 CUR_USER=$(kubectl config view --minify -o jsonpath='{.contexts[0].context.user}')
 
 kubectl config set-cluster ts-proxy --server="$TS_URL"
-kubectl config unset clusters.ts-proxy.certificate-authority      2>/dev/null || true
-kubectl config unset clusters.ts-proxy.certificate-authority-data 2>/dev/null || true
+kubectl config unset clusters.ts-proxy.certificate-authority      2>/dev/null
+kubectl config unset clusters.ts-proxy.certificate-authority-data 2>/dev/null
 kubectl config set-context ts-proxy --cluster=ts-proxy --user="$CUR_USER"
 kubectl config use-context ts-proxy
 ```
