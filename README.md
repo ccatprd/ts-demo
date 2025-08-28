@@ -130,7 +130,6 @@ Verify:
 
 ```bash
 kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}{"\n"}'
-kubectl get nodes
 ```
 
 ## 6) Lock down the EKS API to private only
