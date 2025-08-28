@@ -80,7 +80,7 @@ cd kubernetes/operator
 
 # namespace + secret
 kubectl apply -f 00-namespace.yaml
-kubectl -n tailscale apply -f 01-operator-oauth-secret.yaml
+kubectl apply -f 01-operator-oauth-secret.yaml
 
 # install via Helm using values.yaml
 helm repo add tailscale https://pkgs.tailscale.com/helmcharts
