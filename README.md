@@ -1,4 +1,4 @@
-# Tailscale Operator on EKS: API Server Proxy + Egress Demo
+# Tailscale Operator on EKS: API Server Proxy + Cluster Egress Demo
 
 This repo stands up an EKS cluster with the Tailscale Kubernetes Operator. It demonstrates:
 
