@@ -14,19 +14,23 @@ This repo stands up an EKS cluster with the Tailscale Kubernetes Operator. It de
 
 ## What Terraform Creates
 
-- A VPC with private subnets
-- An EKS cluster (temporarily with a public API endpoint until the proxy is ready)
-- Managed node groups to run workloads
-- IAM roles, security groups, and supporting AWS resources
+- **VPC with private subnets and routing**  
+- **EKS control plane** (initially with a public API endpoint until the proxy is ready, then private-only)  
+- **2 EC2 instances** (EKS managed node group, `t3.medium`)  
+- **IAM roles and security groups** for the cluster and worker nodes  
+- **CloudWatch log group** for API server logs  
+- **KMS key and alias** for encrypting Kubernetes secrets at rest 
+
 
 ## What Kubernetes/Helm Creates
 
-- `00-namespace.yaml`: Creates the `tailscale` namespace
-- `01-operator-oauth-secret.yaml`: Stores the OAuth client credentials for the operator
-- `values.yaml`: Provides configuration for the operator and proxy
-- Helm chart (`tailscale/tailscale-operator`): Deploys the operator and related CRDs
-- `tailnet-service.yaml`: Service that lets cluster workloads egress to the tailnet
-- `testbox-pod.yaml`: A simple Alpine pod for running egress and DNS tests
+- **Namespace** (`tailscale`) to isolate operator resources  
+- **Secret** (`operator-oauth`) containing the Tailscale OAuth client credentials  
+- **Tailscale Operator Deployment** (via Helm chart `tailscale/tailscale-operator`)  
+- **Custom Resource Definitions (CRDs)** that enable API Server Proxy, egress, ingress, and connector features  
+- **API Server Proxy** device inside the tailnet, providing secure `kubectl` access without public endpoints  
+- **Cluster egress Service** annotated with a tailnet IP, routing pod traffic through the tailnet  
+- **Test pod** (`testbox`) for validating egress and MagicDNS lookups
 
 ## 1) Clone and set custom values
 
