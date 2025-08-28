@@ -200,6 +200,14 @@ kubectl exec -it testbox -- sh -lc 'wget -q -O- http://tailnet-egress-demo:8000/
 
 You should see the file contents returned.
 
+```bash
+kubectl exec -it testbox -- sh -lc 'wget -q -O- http://tailnet-egress-demo:8000/myfile.txt'
+
+it works!
+
+myfile.txt has my awesome content.
+```
+
 ## Useful checks
 
 ```bash
