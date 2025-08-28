@@ -162,7 +162,7 @@ python3 -m http.server 8000 --bind <your-tailnet-ip>
 From inside the testbox pod, fetch a file through the egress Service:
 
 ```bash
-kubectl exec -it testbox -- sh -lc 'wget -q -O- http://default-tailnet-egress-demo:8000/myfile.txt'
+kubectl exec -it testbox -- sh -lc 'wget -q -O- http://tailnet-egress-demo:8000/myfile.txt'
 ```
 
 You should see the file contents returned. That proves pod egress to your tailnet node.
