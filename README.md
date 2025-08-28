@@ -140,6 +140,13 @@ cluster_endpoint_private_access = true
 cluster_endpoint_public_access  = false
 ```
 
+Apply only the EKS module:
+
+```bash
+cd terraform
+terraform apply -target=module.eks
+```
+
 ## 7) Prove the API Proxy tunnel works
 
 With your Tailscale client **connected**, the proxy responds:
@@ -155,13 +162,6 @@ kubectl get nodes
 # This should fail to connect, proving the API is private and only reachable over Tailscale
 ```
 
-Apply only the EKS module:
-
-```bash
-cd terraform
-terraform apply -target=module.eks
-```
-
 Your `ts-proxy` context will continue working. The public context will stop.
 
 ## 8) Egress demo
@@ -173,7 +173,7 @@ kubectl apply -f testbox-pod.yaml
 kubectl wait --for=condition=Ready pod/testbox --timeout=120s
 ```
 
-On your laptop:
+On your laptop (I used elevated PowerShell for this simple web server):
 
 ```powershell
 python3 -m http.server 8000 --bind <your-tailnet-ip>
